@@ -1,6 +1,8 @@
 package daos;
 
 import java.sql.*;
+import core.BDSQLServer;
+import core.MeuResultSet;
 import dbos.Aluno_DBO;
 
 public class Aluno_DAO 
@@ -68,7 +70,7 @@ public class Aluno_DAO
 			
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			
-			BDSQLServer.COMANDO.setInt(1, student.getRa());
+			BDSQLServer.COMANDO.setInt(1, ra);
 			
 			BDSQLServer.COMANDO.executeUpdate();
 			BDSQLServer.COMANDO.commit();
@@ -86,7 +88,7 @@ public class Aluno_DAO
 		{
 			String sql = "select * from Student";
 			
-			BDSQlServer.COMANDO.prepareStatement(sql);
+			BDSQLServer.COMANDO.prepareStatement(sql);
 			
 			resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery();
 		}
