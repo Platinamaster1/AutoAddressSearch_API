@@ -30,6 +30,8 @@ import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
 import javax.swing.border.LineBorder;
 import java.awt.Insets;
+import javax.swing.BoxLayout;
+import java.awt.GridLayout;
 
 public class Principal {
 
@@ -39,11 +41,11 @@ public class Principal {
 	private JTextField txtNeigh;
 	private JTextField txtCity;
 	private JTextField txtState;
+	private JTextField txtComplement;
+	private JTextField txtNumber;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField txtComplement;
-	private JTextField txtNumber;
 
 	/**
 	 * Launch the application.
@@ -357,78 +359,48 @@ public class Principal {
 		panel_8.setLayout(gl_panel_8);
 		panel_6.setLayout(gl_panel_6);
 		
-		JPanel panel_7 = new JPanel();
-		panel_5.add(panel_7, BorderLayout.WEST);
-		GridBagLayout gbl_panel_7 = new GridBagLayout();
-		gbl_panel_7.columnWidths = new int[] {0, 0};
-		gbl_panel_7.rowHeights = new int[] {0, 0, 0, 0};
-		gbl_panel_7.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_7.setLayout(gbl_panel_7);
-		
-		JLabel lblRa = new JLabel("RA:");
-		lblRa.setFont(new Font("Dialog", Font.PLAIN, 15));
-		GridBagConstraints gbc_lblRa = new GridBagConstraints();
-		gbc_lblRa.insets = new Insets(0, 0, 5, 0);
-		gbc_lblRa.gridx = 0;
-		gbc_lblRa.gridy = 0;
-		panel_7.add(lblRa, gbc_lblRa);
-		
-		JLabel lblName = new JLabel("Name: ");
-		lblName.setFont(new Font("Dialog", Font.PLAIN, 15));
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.insets = new Insets(0, 0, 5, 0);
-		gbc_lblName.anchor = GridBagConstraints.NORTH;
-		gbc_lblName.gridx = 0;
-		gbc_lblName.gridy = 1;
-		panel_7.add(lblName, gbc_lblName);
-		
-		JLabel lblCourse = new JLabel("Course:");
-		lblCourse.setFont(new Font("Dialog", Font.PLAIN, 15));
-		GridBagConstraints gbc_lblCourse = new GridBagConstraints();
-		gbc_lblCourse.gridx = 0;
-		gbc_lblCourse.gridy = 2;
-		panel_7.add(lblCourse, gbc_lblCourse);
-		
 		JPanel panel_12 = new JPanel();
 		panel_5.add(panel_12, BorderLayout.CENTER);
-		GridBagLayout gbl_panel_12 = new GridBagLayout();
-		gbl_panel_12.columnWidths = new int[]{0, 0};
-		gbl_panel_12.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_12.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_12.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_12.setLayout(gbl_panel_12);
+		panel_12.setLayout(new GridLayout(0, 2, -200, 100));
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_1.setColumns(5);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.anchor = GridBagConstraints.WEST;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.gridx = 0;
-		gbc_textField_1.gridy = 0;
-		panel_12.add(textField_1, gbc_textField_1);
+		JLabel label = new JLabel("RA:");
+		label.setFont(new Font("Dialog", Font.PLAIN, 15));
+		panel_12.add(label);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.anchor = GridBagConstraints.WEST;
-		gbc_textField.gridx = 0;
-		gbc_textField.gridy = 1;
-		panel_12.add(textField, gbc_textField);
-		textField.setColumns(27);
+		textField.setColumns(5);
+		panel_12.add(textField);
+		
+		JLabel label_1 = new JLabel("Name: ");
+		label_1.setFont(new Font("Dialog", Font.PLAIN, 15));
+		panel_12.add(label_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		textField_1.setColumns(27);
+		panel_12.add(textField_1);
+		
+		JLabel label_2 = new JLabel("Course:");
+		label_2.setFont(new Font("Dialog", Font.PLAIN, 15));
+		panel_12.add(label_2);
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textField_2.setColumns(5);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.anchor = GridBagConstraints.WEST;
-		gbc_textField_2.gridx = 0;
-		gbc_textField_2.gridy = 2;
-		panel_12.add(textField_2, gbc_textField_2);
+		panel_12.add(textField_2);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("QUERIES", null, panel_3, null);
+		GroupLayout gl_panel_3 = new GroupLayout(panel_3);
+		gl_panel_3.setHorizontalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 754, Short.MAX_VALUE)
+		);
+		gl_panel_3.setVerticalGroup(
+			gl_panel_3.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 327, Short.MAX_VALUE)
+		);
+		panel_3.setLayout(gl_panel_3);
 	}
 }
