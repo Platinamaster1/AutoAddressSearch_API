@@ -1,2 +1,2 @@
-# PublicAreaConsultant_WEBSERVER
+# AutoAddressSearch_API
 Projeto de Estruturas de Dados I em que dados de endereço de usuário são buscados automaticamente através do CEP.
