@@ -5,4 +5,5 @@ create table Student
     course int not null,
     zip varchar(30) not null,
     complement varchar(100) not null
+    number int not null
 )

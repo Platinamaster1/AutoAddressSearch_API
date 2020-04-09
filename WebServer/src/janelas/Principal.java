@@ -42,6 +42,8 @@ public class Principal {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField txtComplement;
+	private JTextField txtNumber;
 
 	/**
 	 * Launch the application.
@@ -103,6 +105,12 @@ public class Principal {
 		panel_2.add(panel_4, BorderLayout.SOUTH);
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		JButton btnSearchStudent = new JButton("SEARCH");
+		btnSearchStudent.setForeground(Color.WHITE);
+		btnSearchStudent.setFont(new Font("Dialog", Font.PLAIN, 25));
+		btnSearchStudent.setBackground(Color.BLACK);
+		panel_4.add(btnSearchStudent);
+		
 		JButton btnInsert = new JButton("INSERT");
 		btnInsert.setBackground(Color.BLACK);
 		btnInsert.setForeground(Color.WHITE);
@@ -142,17 +150,15 @@ public class Principal {
 			gl_panel_6.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_6.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_8, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.TRAILING)
+						.addComponent(panel_8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_panel_6.createSequentialGroup()
 							.addComponent(panel_11, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
 							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
+						.addGroup(gl_panel_6.createSequentialGroup()
 							.addComponent(panel_10, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
 							.addContainerGap())
-						.addGroup(gl_panel_6.createSequentialGroup()
-							.addComponent(panel_9, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-							.addContainerGap())))
+						.addComponent(panel_9, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)))
 		);
 		gl_panel_6.setVerticalGroup(
 			gl_panel_6.createParallelGroup(Alignment.LEADING)
@@ -186,15 +192,14 @@ public class Principal {
 		GroupLayout gl_panel_11 = new GroupLayout(panel_11);
 		gl_panel_11.setHorizontalGroup(
 			gl_panel_11.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_11.createSequentialGroup()
-					.addComponent(txtCity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(txtState, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(63, Short.MAX_VALUE))
-				.addGroup(gl_panel_11.createSequentialGroup()
-					.addComponent(lblCidade)
-					.addPreferredGap(ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
-					.addComponent(lblEstado)
+				.addGroup(Alignment.TRAILING, gl_panel_11.createSequentialGroup()
+					.addGroup(gl_panel_11.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCidade)
+						.addComponent(txtCity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addGroup(gl_panel_11.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblEstado)
+						.addComponent(txtState, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(60))
 		);
 		gl_panel_11.setVerticalGroup(
@@ -244,21 +249,35 @@ public class Principal {
 		txtStreet.setEditable(false);
 		txtStreet.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		txtStreet.setColumns(30);
+		
+		JLabel lblNumber = new JLabel("Number:");
+		lblNumber.setFont(new Font("Dialog", Font.PLAIN, 15));
+		
+		txtNumber = new JTextField();
+		txtNumber.setColumns(10);
 		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
 		gl_panel_9.setHorizontalGroup(
 			gl_panel_9.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_9.createSequentialGroup()
 					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNomeDaRua, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtStreet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(txtStreet, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNumber)
+						.addComponent(txtNumber, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(22, Short.MAX_VALUE))
 		);
 		gl_panel_9.setVerticalGroup(
 			gl_panel_9.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_9.createSequentialGroup()
-					.addComponent(lblNomeDaRua)
-					.addGap(6)
-					.addComponent(txtStreet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNomeDaRua)
+						.addComponent(lblNumber, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtStreet, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtNumber, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_9.setLayout(gl_panel_9);
@@ -283,6 +302,7 @@ public class Principal {
 					txtNeigh.setText(logradouro.getBairro());
 					txtCity.setText(logradouro.getCidade());
 					txtState.setText(logradouro.getEstado());
+					txtComplement.setText(logradouro.getComplemento());
 				}
 				catch(Exception ex)
 				{
@@ -295,26 +315,43 @@ public class Principal {
 		btnSearch.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnSearch.setBackground(Color.BLACK);
 		btnSearch.setForeground(Color.WHITE);
+		
+		JLabel lblComplement = new JLabel("Complement:");
+		lblComplement.setFont(new Font("Dialog", Font.PLAIN, 15));
+		
+		txtComplement = new JTextField();
+		txtComplement.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		txtComplement.setColumns(5);
 		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
 		gl_panel_8.setHorizontalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addComponent(lblCep, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-					.addGap(117))
-				.addGroup(gl_panel_8.createSequentialGroup()
-					.addComponent(txtZip, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(102, Short.MAX_VALUE))
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_8.createSequentialGroup()
+							.addComponent(lblCep, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSearch))
+						.addComponent(txtZip, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_8.createSequentialGroup()
+							.addComponent(lblComplement, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+							.addGap(94))
+						.addGroup(gl_panel_8.createSequentialGroup()
+							.addComponent(txtComplement, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+							.addContainerGap())))
 		);
 		gl_panel_8.setVerticalGroup(
 			gl_panel_8.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_8.createSequentialGroup()
-					.addComponent(lblCep)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCep)
+						.addComponent(lblComplement, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtZip, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtComplement, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel_8.setLayout(gl_panel_8);
@@ -384,7 +421,7 @@ public class Principal {
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_2.setColumns(27);
+		textField_2.setColumns(5);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
 		gbc_textField_2.anchor = GridBagConstraints.WEST;
 		gbc_textField_2.gridx = 0;
