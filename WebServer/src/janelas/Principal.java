@@ -61,7 +61,7 @@ public class Principal {
 		panel.setBackground(Color.LIGHT_GRAY);
 		frame.getContentPane().add(panel, BorderLayout.NORTH);
 		
-		JLabel lblP = new JLabel("Public Area Consultant");
+		JLabel lblP = new JLabel("Students Management");
 		lblP.setFont(new Font("Courier New", Font.PLAIN, 40));
 		panel.add(lblP);
 		
@@ -109,28 +109,44 @@ public class Principal {
 		JPanel panel_6 = new JPanel();
 		panel_5.add(panel_6, BorderLayout.EAST);
 		
-		JLabel lblCep = new JLabel("CEP: ");
-		lblCep.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		JPanel panel_8 = new JPanel();
+		panel_8.setBorder(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField.setColumns(10);
+		JPanel panel_9 = new JPanel();
 		
-		JLabel lblNomeDaRua = new JLabel("Street's Name: ");
-		lblNomeDaRua.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		JPanel panel_10 = new JPanel();
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_1.setColumns(30);
-		
-		JLabel lblBairro = new JLabel("Neighborhood: ");
-		lblBairro.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
-		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_2.setColumns(25);
+		JPanel panel_11 = new JPanel();
+		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
+		gl_panel_6.setHorizontalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_8, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+						.addGroup(gl_panel_6.createSequentialGroup()
+							.addComponent(panel_11, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_panel_6.createSequentialGroup()
+							.addComponent(panel_10, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(gl_panel_6.createSequentialGroup()
+							.addComponent(panel_9, GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+							.addContainerGap())))
+		);
+		gl_panel_6.setVerticalGroup(
+			gl_panel_6.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_6.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_8, GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel_9, GroupLayout.PREFERRED_SIZE, 59, Short.MAX_VALUE)
+					.addGap(11)
+					.addComponent(panel_10, GroupLayout.PREFERRED_SIZE, 50, Short.MAX_VALUE)
+					.addGap(13)
+					.addComponent(panel_11, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+					.addGap(17))
+		);
 		
 		JLabel lblCidade = new JLabel("City: ");
 		lblCidade.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
@@ -140,66 +156,127 @@ public class Principal {
 		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textField_3.setColumns(20);
 		
-		JLabel lblEstado = new JLabel("State: ");
-		lblEstado.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
-		
 		textField_4 = new JTextField();
 		textField_4.setEditable(false);
 		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textField_4.setColumns(3);
-		GroupLayout gl_panel_6 = new GroupLayout(panel_6);
-		gl_panel_6.setHorizontalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_6.createSequentialGroup()
-							.addGap(5)
-							.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNomeDaRua)
-								.addComponent(lblCep)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_panel_6.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCidade))
-							.addGap(10)
-							.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEstado)))
-						.addGroup(gl_panel_6.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_panel_6.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblBairro))))
+		
+		JLabel lblEstado = new JLabel("State: ");
+		lblEstado.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		GroupLayout gl_panel_11 = new GroupLayout(panel_11);
+		gl_panel_11.setHorizontalGroup(
+			gl_panel_11.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_11.createSequentialGroup()
+					.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(63, Short.MAX_VALUE))
+				.addGroup(gl_panel_11.createSequentialGroup()
+					.addComponent(lblCidade)
+					.addPreferredGap(ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+					.addComponent(lblEstado)
+					.addGap(60))
+		);
+		gl_panel_11.setVerticalGroup(
+			gl_panel_11.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_11.createSequentialGroup()
+					.addGroup(gl_panel_11.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCidade)
+						.addComponent(lblEstado))
+					.addGap(6)
+					.addGroup(gl_panel_11.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_panel_6.setVerticalGroup(
-			gl_panel_6.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_6.createSequentialGroup()
-					.addGap(5)
-					.addComponent(lblCep)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNomeDaRua)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+		panel_11.setLayout(gl_panel_11);
+		
+		JLabel lblBairro = new JLabel("Neighborhood: ");
+		lblBairro.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		
+		textField_2 = new JTextField();
+		textField_2.setEditable(false);
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		textField_2.setColumns(25);
+		GroupLayout gl_panel_10 = new GroupLayout(panel_10);
+		gl_panel_10.setHorizontalGroup(
+			gl_panel_10.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_10.createSequentialGroup()
+					.addGroup(gl_panel_10.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblBairro)
+						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(65, Short.MAX_VALUE))
+		);
+		gl_panel_10.setVerticalGroup(
+			gl_panel_10.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_10.createSequentialGroup()
 					.addComponent(lblBairro)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(29)
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCidade)
-						.addComponent(lblEstado))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel_6.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(25))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
+		panel_10.setLayout(gl_panel_10);
+		
+		JLabel lblNomeDaRua = new JLabel("Street:");
+		lblNomeDaRua.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		textField_1.setColumns(30);
+		GroupLayout gl_panel_9 = new GroupLayout(panel_9);
+		gl_panel_9.setHorizontalGroup(
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addGroup(gl_panel_9.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNomeDaRua, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panel_9.setVerticalGroup(
+			gl_panel_9.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_9.createSequentialGroup()
+					.addComponent(lblNomeDaRua)
+					.addGap(6)
+					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_9.setLayout(gl_panel_9);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		textField.setColumns(10);
+		
+		JLabel lblCep = new JLabel("Zip Code:");
+		lblCep.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
+		
+		JButton btnSearch = new JButton("SEARCH");
+		btnSearch.setFont(new Font("Dialog", Font.PLAIN, 11));
+		btnSearch.setBackground(Color.BLACK);
+		btnSearch.setForeground(Color.WHITE);
+		GroupLayout gl_panel_8 = new GroupLayout(panel_8);
+		gl_panel_8.setHorizontalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(lblCep, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+					.addGap(117))
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(102, Short.MAX_VALUE))
+		);
+		gl_panel_8.setVerticalGroup(
+			gl_panel_8.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_8.createSequentialGroup()
+					.addComponent(lblCep)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel_8.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSearch, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_8.setLayout(gl_panel_8);
 		panel_6.setLayout(gl_panel_6);
 		
 		JPanel panel_7 = new JPanel();
@@ -209,6 +286,6 @@ public class Principal {
 		panel_7.add(lblName);
 		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("CONSULTS", null, panel_3, null);
+		tabbedPane.addTab("QUERIES", null, panel_3, null);
 	}
 }
