@@ -40,7 +40,7 @@ public class Aluno_DAO
 		
 		try
 		{
-			String sql = "update Student set name = ? set courseNumber = ? set zipCode = ? set complement = ? set number = ? where ra = ?";
+			String sql = "update Student set sname = ? set course = ? set zip = ? set complement = ? set number = ? where ra = ?";
 			
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			
@@ -79,6 +79,32 @@ public class Aluno_DAO
 		{
 			throw new Exception ("Student Deletion Error");
 		}
+	}
+	public static Aluno_DBO getAluno(int ra) throws Exception 
+	{
+		Aluno_DBO student = null;
+		
+		try
+		{
+			String sql = "select * from Student where ra = ?";
+			
+			BDSQLServer.COMANDO.prepareStatement(sql);
+			
+			BDSQLServer.COMANDO.setInt(1, ra);
+			
+			MeuResultSet resultado = (MeuResultSet) BDSQLServer.COMANDO.executeQuery();
+			
+			if(!resultado.first())
+				throw new Exception("RA Not Registered");
+			
+			student = new Aluno_DBO(ra, resultado.getString("sname"), resultado.getInt("course"), resultado.getString("zip"), resultado.getString("complement"), resultado.getInt("number"));
+		}
+		catch(SQLException ex)
+		{
+			throw new Exception("ERROR! Couldn't get the student");
+		}
+		
+		return student;
 	}
 	public static MeuResultSet getAlunos() throws Exception
 	{
