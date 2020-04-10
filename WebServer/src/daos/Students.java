@@ -3,11 +3,11 @@ package daos;
 import java.sql.*;
 import core.BDSQLServer;
 import core.MeuResultSet;
-import dbos.Aluno_DBO;
+import dbos.Student;
 
-public class Aluno_DAO 
+public class Students 
 {
-	public void insert (Aluno_DBO student) throws Exception
+	public void insert (Student student) throws Exception
 	{
 		if(student==null)
 			throw new Exception("Invalid Student!");
@@ -33,14 +33,14 @@ public class Aluno_DAO
 			throw new Exception ("Student Insertion Error");
 		}
 	}
-	public void update (Aluno_DBO student) throws Exception
+	public void update (Student student) throws Exception
 	{
 		if(student==null)
 			throw new Exception("Invalid Student!");
 		
 		try
 		{
-			String sql = "update Student set sname = ? set course = ? set zip = ? set complement = ? set number = ? where ra = ?";
+			String sql = "update Student set sname = ? , course = ? , zip = ? , complement = ? , number = ? where ra = ?";
 			
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			
@@ -80,9 +80,9 @@ public class Aluno_DAO
 			throw new Exception ("Student Deletion Error");
 		}
 	}
-	public static Aluno_DBO getAluno(int ra) throws Exception 
+	public static Student getAluno(int ra) throws Exception 
 	{
-		Aluno_DBO student = null;
+		Student student = null;
 		
 		try
 		{
@@ -97,7 +97,7 @@ public class Aluno_DAO
 			if(!resultado.first())
 				throw new Exception("RA Not Registered");
 			
-			student = new Aluno_DBO(ra, resultado.getString("sname"), resultado.getInt("course"), resultado.getString("zip"), resultado.getString("complement"), resultado.getInt("number"));
+			student = new Student(ra, resultado.getString("sname"), resultado.getInt("course"), resultado.getString("zip"), resultado.getString("complement"), resultado.getInt("number"));
 		}
 		catch(SQLException ex)
 		{

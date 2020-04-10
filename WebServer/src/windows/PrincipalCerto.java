@@ -1,4 +1,4 @@
-package janelas;
+package windows;
 
 import java.awt.EventQueue;
 
@@ -30,8 +30,8 @@ import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
 import javax.swing.border.LineBorder;
 
-import daos.Aluno_DAO;
-import dbos.Aluno_DBO;
+import daos.Students;
+import dbos.Student;
 
 import java.awt.Insets;
 import javax.swing.BoxLayout;
@@ -120,10 +120,11 @@ public class PrincipalCerto {
 				try
 				{
 					if(txtRa.getText()==null || txtRa.getText().equals(""))
-						throw new Exception ("The Ra is necessary for the search!");
+						throw new Exception ("RA is necessary for the search!");
+					
 					int ra = Integer.parseInt(txtRa.getText());
 					
-					Aluno_DBO student = Aluno_DAO.getAluno(ra);
+					Student student = Students.getAluno(ra);
 					
 					txtName.setText(student.getName());
 					txtCourse.setText(String.valueOf(student.getCourseNumber()));
@@ -134,7 +135,7 @@ public class PrincipalCerto {
 				}
 				catch(Exception ex)
 				{
-					JOptionPane.showMessageDialog(null, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -144,6 +145,13 @@ public class PrincipalCerto {
 		panel_4.add(btnSearchStudent);
 		
 		JButton btnInsert = new JButton("INSERT");
+		btnInsert.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
+			}
+		});
 		btnInsert.setBackground(Color.BLACK);
 		btnInsert.setForeground(Color.WHITE);
 		btnInsert.setFont(new Font("Book Antiqua", Font.PLAIN, 25));

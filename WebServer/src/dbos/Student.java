@@ -1,6 +1,6 @@
 package dbos;
 
-public class Aluno_DBO 
+public class Student 
 {
 	// ATRIBUTOS
 	private int ra;
@@ -10,7 +10,7 @@ public class Aluno_DBO
 	private String complement;
 	private int number;
 	
-	public Aluno_DBO (int ra, String name, int courseN, String zipCode, String complement, int number) throws Exception
+	public Student (int ra, String name, int courseN, String zipCode, String complement, int number) throws Exception
 	{
 		this.setRa(ra);
 		this.setName(name);
@@ -114,7 +114,7 @@ public class Aluno_DBO
 		if(this.getClass()!=obj.getClass())
 			return false;
 		
-		Aluno_DBO aluno = (Aluno_DBO)obj;
+		Student aluno = (Student)obj;
 		
 		if(this.ra != aluno.ra)
 			return false;
@@ -134,7 +134,7 @@ public class Aluno_DBO
 		return ret;
 	}
 	
-	private Aluno_DBO(Aluno_DBO model) throws Exception
+	private Student(Student model) throws Exception
 	{
 		if(model==null)
 			throw new Exception ("Invalid Model!");
@@ -148,11 +148,11 @@ public class Aluno_DBO
 	}
 	public Object clone()
 	{
-		Aluno_DBO student = null;
+		Student student = null;
 		
 		try
 		{
-			student = new Aluno_DBO(this);
+			student = new Student(this);
 		}
 		catch(Exception ignored) {}
 		
