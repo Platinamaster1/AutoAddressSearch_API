@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
-	<classpathentry kind="lib" path="E:/MATERIAL_DIDATICO - 3ºSemestre/Arquitetura Orientada a Serviços/2020-03-09/jackson-all-1.9.0.jar"/>
-	<classpathentry kind="lib" path="E:/MATERIAL_DIDATICO - 3ºSemestre/src/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="jackson-all-1.9.0.jar"/>
+	<classpathentry kind="lib" path="sqljdbc42.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
