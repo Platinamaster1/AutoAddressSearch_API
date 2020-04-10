@@ -29,6 +29,10 @@ import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
 import javax.swing.border.LineBorder;
+
+import daos.Students;
+import dbos.Student;
+
 import java.awt.Insets;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
@@ -43,9 +47,10 @@ public class Principal {
 	private JTextField txtState;
 	private JTextField txtComplement;
 	private JTextField txtNumber;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtRa;
+	private JTextField txtName;
+	private JTextField txtCourse;
+	private JButton btnSearch;
 
 	/**
 	 * Launch the application.
@@ -75,7 +80,7 @@ public class Principal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\nicol\\OneDrive\\Outros\\Documentos\\GitHub\\PublicAreaConsultant_WEBSERVER\\images\\student"));
+		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\nicol\\OneDrive\\Outros\\Documentos\\GitHub\\PublicAreaConsultant_WEBSERVER\\images\\student"));
 		frame.setBounds(100, 100, 775, 474);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -108,12 +113,45 @@ public class Principal {
 		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnSearchStudent = new JButton("SEARCH");
+		btnSearchStudent.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try
+				{
+					if(txtRa.getText()==null || txtRa.getText().equals(""))
+						throw new Exception ("RA is necessary for the search!");
+					
+					int ra = Integer.parseInt(txtRa.getText());
+					
+					Student student = Students.getAluno(ra);
+					
+					txtName.setText(student.getName());
+					txtCourse.setText(String.valueOf(student.getCourseNumber()));
+					txtZip.setText(student.getZipCode());
+					btnSearch.doClick();
+					txtComplement.setText(student.getComplement());
+					txtNumber.setText(String.valueOf(student.getNumber()));
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnSearchStudent.setForeground(Color.WHITE);
 		btnSearchStudent.setFont(new Font("Dialog", Font.PLAIN, 25));
 		btnSearchStudent.setBackground(Color.BLACK);
 		panel_4.add(btnSearchStudent);
 		
 		JButton btnInsert = new JButton("INSERT");
+		btnInsert.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				
+			}
+		});
 		btnInsert.setBackground(Color.BLACK);
 		btnInsert.setForeground(Color.WHITE);
 		btnInsert.setFont(new Font("Book Antiqua", Font.PLAIN, 25));
@@ -291,7 +329,7 @@ public class Principal {
 		JLabel lblCep = new JLabel("Zip Code:");
 		lblCep.setFont(new Font("Book Antiqua", Font.PLAIN, 15));
 		
-		JButton btnSearch = new JButton("SEARCH");
+		btnSearch = new JButton("SEARCH");
 		btnSearch.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -304,7 +342,12 @@ public class Principal {
 					txtNeigh.setText(logradouro.getBairro());
 					txtCity.setText(logradouro.getCidade());
 					txtState.setText(logradouro.getEstado());
-					txtComplement.setText(logradouro.getComplemento());
+					String complemento = logradouro.getComplemento();
+					if(complemento==null)
+						txtComplement.setText("INEXISTENTE");
+					else
+						txtComplement.setText(logradouro.getComplemento());
+					System.out.println(logradouro);
 				}
 				catch(Exception ex)
 				{
@@ -361,34 +404,118 @@ public class Principal {
 		
 		JPanel panel_12 = new JPanel();
 		panel_5.add(panel_12, BorderLayout.CENTER);
-		panel_12.setLayout(new GridLayout(0, 2, -200, 100));
+		
+		JPanel panel_7 = new JPanel();
+		
+		JPanel panel_13 = new JPanel();
+		
+		JPanel panel_14 = new JPanel();
+		GroupLayout gl_panel_12 = new GroupLayout(panel_12);
+		gl_panel_12.setHorizontalGroup(
+			gl_panel_12.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_12.createSequentialGroup()
+					.addComponent(panel_7, GroupLayout.PREFERRED_SIZE, 390, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(3, Short.MAX_VALUE))
+				.addGroup(gl_panel_12.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_14, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(gl_panel_12.createSequentialGroup()
+					.addComponent(panel_13, GroupLayout.PREFERRED_SIZE, 390, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panel_12.setVerticalGroup(
+			gl_panel_12.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_12.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_14, GroupLayout.PREFERRED_SIZE, 34, Short.MAX_VALUE)
+					.addGap(62)
+					.addComponent(panel_13, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(81)
+					.addComponent(panel_7, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 		
 		JLabel label = new JLabel("RA:");
 		label.setFont(new Font("Dialog", Font.PLAIN, 15));
-		panel_12.add(label);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField.setColumns(5);
-		panel_12.add(textField);
+		txtRa = new JTextField();
+		txtRa.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		txtRa.setColumns(5);
+		GroupLayout gl_panel_14 = new GroupLayout(panel_14);
+		gl_panel_14.setHorizontalGroup(
+			gl_panel_14.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_14.createSequentialGroup()
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addGap(36)
+					.addComponent(txtRa, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(40, Short.MAX_VALUE))
+		);
+		gl_panel_14.setVerticalGroup(
+			gl_panel_14.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_14.createSequentialGroup()
+					.addGroup(gl_panel_14.createParallelGroup(Alignment.LEADING)
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtRa, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel_14.setLayout(gl_panel_14);
 		
 		JLabel label_1 = new JLabel("Name: ");
 		label_1.setFont(new Font("Dialog", Font.PLAIN, 15));
-		panel_12.add(label_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_1.setColumns(27);
-		panel_12.add(textField_1);
+		txtName = new JTextField();
+		txtName.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		txtName.setColumns(27);
+		GroupLayout gl_panel_13 = new GroupLayout(panel_13);
+		gl_panel_13.setHorizontalGroup(
+			gl_panel_13.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_panel_13.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label_1)
+					.addGap(23)
+					.addComponent(txtName, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(38, Short.MAX_VALUE))
+		);
+		gl_panel_13.setVerticalGroup(
+			gl_panel_13.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_13.createSequentialGroup()
+					.addGroup(gl_panel_13.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtName, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(13, Short.MAX_VALUE))
+		);
+		panel_13.setLayout(gl_panel_13);
+		
+		txtCourse = new JTextField();
+		txtCourse.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		txtCourse.setColumns(5);
 		
 		JLabel label_2 = new JLabel("Course:");
 		label_2.setFont(new Font("Dialog", Font.PLAIN, 15));
-		panel_12.add(label_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		textField_2.setColumns(5);
-		panel_12.add(textField_2);
+		GroupLayout gl_panel_7 = new GroupLayout(panel_7);
+		gl_panel_7.setHorizontalGroup(
+			gl_panel_7.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_7.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(label_2)
+					.addGap(18)
+					.addComponent(txtCourse, GroupLayout.PREFERRED_SIZE, 275, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
+		gl_panel_7.setVerticalGroup(
+			gl_panel_7.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_7.createSequentialGroup()
+					.addContainerGap(13, Short.MAX_VALUE)
+					.addGroup(gl_panel_7.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel_7.createSequentialGroup()
+							.addGap(1)
+							.addComponent(txtCourse, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		panel_7.setLayout(gl_panel_7);
+		panel_12.setLayout(gl_panel_12);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("QUERIES", null, panel_3, null);
