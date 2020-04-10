@@ -22,7 +22,10 @@ public class Logradouro
     }
     public void setComplemento (String complemento) throws Exception
     {
-        this.complemento = complemento;
+    	if(complemento != null)
+    		this.complemento = complemento;
+    	else
+    		this.complemento = null;
     }
 
     private String bairro;

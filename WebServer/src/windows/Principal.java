@@ -124,9 +124,19 @@ public class Principal {
 					
 					int ra = Integer.parseInt(txtRa.getText());
 					
-					Student student = Students.getAluno(ra);
+					Student student = null;
+					try
+					{
+						student = Students.getStudent(ra);
+					}
+					catch(Exception ex)
+					{
+						JOptionPane.showMessageDialog(null, "Student not found!", "ERROR", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
 					
 					txtName.setText(student.getName());
+					
 					txtCourse.setText(String.valueOf(student.getCourseNumber()));
 					txtZip.setText(student.getZipCode());
 					btnSearch.doClick();
@@ -135,7 +145,7 @@ public class Principal {
 				}
 				catch(Exception ex)
 				{
-					JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Fill the RA blank and try again!", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -149,7 +159,23 @@ public class Principal {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
+				try
+				{
+					int ra = Integer.parseInt(txtRa.getText());
+					String name = txtName.getText();
+					int course = Integer.parseInt(txtCourse.getText());
+					String zip = txtZip.getText();
+					String complem = txtComplement.getText();
+					int number = Integer.parseInt(txtNumber.getText());
+					
+					Student student = new Student(ra, name, course, zip, complem, number);
+					Students.insert(student);
+					JOptionPane.showMessageDialog(null, "Sucessful insert!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, "Fill all the blanks and try again later! Be careful not to repeat the RA!", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		btnInsert.setBackground(Color.BLACK);
@@ -158,12 +184,58 @@ public class Principal {
 		panel_4.add(btnInsert);
 		
 		JButton btnUpdate = new JButton("UPDATE");
+		btnUpdate.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try
+				{
+					int ra = Integer.parseInt(txtRa.getText());
+					String name = txtName.getText();
+					int course = Integer.parseInt(txtCourse.getText());
+					String zip = txtZip.getText();
+					String complem = txtComplement.getText();
+					int number = Integer.parseInt(txtNumber.getText());
+					
+					Student student = new Student(ra, name, course, zip, complem, number);
+					Students.update(student);
+					JOptionPane.showMessageDialog(null, "Sucessful update!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, "Fill all the blanks and try again later! Please verify if there really is a student with the typed RA!", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnUpdate.setBackground(Color.BLACK);
 		btnUpdate.setForeground(Color.WHITE);
 		btnUpdate.setFont(new Font("Book Antiqua", Font.PLAIN, 25));
 		panel_4.add(btnUpdate);
 		
 		JButton btnDelete = new JButton("DELETE");
+		btnDelete.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try
+				{
+					if(txtRa.getText()==null || txtRa.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "RA is necessary for the deletion!", "ERROR", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					int ra = Integer.parseInt(txtRa.getText());
+					
+					Students.delete(ra);
+					JOptionPane.showMessageDialog(null, "Sucessful delete!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, "Student not found! Try again!", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnDelete.setBackground(Color.BLACK);
 		btnDelete.setForeground(Color.WHITE);
 		btnDelete.setFont(new Font("Book Antiqua", Font.PLAIN, 25));
@@ -343,15 +415,19 @@ public class Principal {
 					txtCity.setText(logradouro.getCidade());
 					txtState.setText(logradouro.getEstado());
 					String complemento = logradouro.getComplemento();
-					if(complemento==null)
-						txtComplement.setText("INEXISTENTE");
-					else
+					if(complemento!=null)
 						txtComplement.setText(logradouro.getComplemento());
 					System.out.println(logradouro);
 				}
 				catch(Exception ex)
 				{
-					JOptionPane.showMessageDialog(frame, "Zip Code not found!");
+					JOptionPane.showMessageDialog(null, "Zip Code not found!", "ERROR", JOptionPane.ERROR_MESSAGE);
+					txtStreet.setText("");
+					txtNeigh.setText("");
+					txtCity.setText("");
+					txtState.setText("");
+					txtComplement.setText("");
+					txtNumber.setText("");
 				}
 			}
 		});

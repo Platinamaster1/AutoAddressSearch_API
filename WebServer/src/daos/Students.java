@@ -7,14 +7,42 @@ import dbos.Student;
 
 public class Students 
 {
-	public void insert (Student student) throws Exception
+	public static boolean exists (int ra) throws Exception
+    {
+        boolean retorno = false;
+
+        try
+        {
+            String sql;
+
+            sql = "SELECT * " +
+                  "FROM Student " +
+                  "WHERE ra = ?";
+
+            BDSQLServer.COMANDO.prepareStatement (sql);
+
+            BDSQLServer.COMANDO.setInt (1, ra);
+
+            MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery (); //Coloca o resultado em uma variável
+
+            retorno = resultado.first();
+        }
+        catch (SQLException erro)
+        {
+            throw new Exception ("Student search error");
+        }
+
+        return retorno;
+    }
+	
+	public static void insert (Student student) throws Exception
 	{
 		if(student==null)
 			throw new Exception("Invalid Student!");
 		
 		try
 		{
-			String sql = "insert into Student values (?,?,?,?,?)";
+			String sql = "insert into Student values (?,?,?,?,?,?)";
 			
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			
@@ -33,10 +61,13 @@ public class Students
 			throw new Exception ("Student Insertion Error");
 		}
 	}
-	public void update (Student student) throws Exception
+	public static void update (Student student) throws Exception
 	{
 		if(student==null)
 			throw new Exception("Invalid Student!");
+		
+		if(!Students.exists(student.getRa()))
+			throw new Exception("Student not found!");
 		
 		try
 		{
@@ -59,10 +90,10 @@ public class Students
 			throw new Exception ("Student Update Error");
 		}
 	}
-	public void delete (int ra) throws Exception
+	public static void delete (int ra) throws Exception
 	{
-		if(ra < 0)
-			throw new Exception("Invalid RA!");
+		if(!Students.exists(ra))
+			throw new Exception("Student not found!");
 		
 		try
 		{
@@ -80,7 +111,7 @@ public class Students
 			throw new Exception ("Student Deletion Error");
 		}
 	}
-	public static Student getAluno(int ra) throws Exception 
+	public static Student getStudent(int ra) throws Exception 
 	{
 		Student student = null;
 		
@@ -106,7 +137,7 @@ public class Students
 		
 		return student;
 	}
-	public static MeuResultSet getAlunos() throws Exception
+	public static MeuResultSet getStudents() throws Exception
 	{
 		MeuResultSet resultado = null;
 		
@@ -120,7 +151,7 @@ public class Students
 		}
 		catch(SQLException ex)
 		{
-			throw new Exception ("Erro ao Acessar os alunos");
+			throw new Exception ("Error when accessing Students");
 		}
 		
 		return resultado;
