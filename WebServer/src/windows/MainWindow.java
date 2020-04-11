@@ -227,14 +227,14 @@ public class MainWindow {
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "Student is already registered", "ERROR", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Student already registered!", "ERROR", JOptionPane.ERROR_MESSAGE);
 						ScreenCleaner();
 						txtRa.requestFocus();
 					}
 				}
 				catch(Exception ex)
 				{
-					JOptionPane.showMessageDialog(null, "Fill all the blanks and try again later! Be careful not to repeat the RA!", "ERROR", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Fill all the blanks and try again later!", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -267,7 +267,7 @@ public class MainWindow {
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null, "There is not a student registered with this Ra");
+						JOptionPane.showMessageDialog(null, "There isn't any student registered with that RA!");
 						ScreenCleaner();
 					}
 				}
@@ -297,8 +297,6 @@ public class MainWindow {
 					}
 					
 					int ra = Integer.parseInt(txtRa.getText());
-					btnSearchStudent.doClick();
-					
 					if(JOptionPane.showConfirmDialog(null, "Do you really want to delete this Student?", "DELETION", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
 					{
 						Students.delete(ra);
@@ -310,6 +308,7 @@ public class MainWindow {
 				catch(Exception ex)
 				{
 					JOptionPane.showMessageDialog(null, "Student not found! Try again!", "ERROR", JOptionPane.ERROR_MESSAGE);
+					ScreenCleaner();
 				}
 			}
 		});
@@ -496,9 +495,8 @@ public class MainWindow {
 					txtCity.setText(logradouro.getCidade());
 					txtState.setText(logradouro.getEstado());
 					String complemento = logradouro.getComplemento();
-					if(complemento!=null)
+					if(complemento != null)
 						txtComplement.setText(logradouro.getComplemento());
-					System.out.println(logradouro);
 				}
 				catch(Exception ex)
 				{
@@ -692,6 +690,7 @@ public class MainWindow {
 		);
 		panel_3.setLayout(gl_panel_3);
 	}
+	
 	private void ScreenCleaner()
 	{
 		txtZip.setText("");
