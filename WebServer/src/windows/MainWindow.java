@@ -39,6 +39,12 @@ import dbos.Student;
 import java.awt.Insets;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
+import core.MeuResultSet;
+import javax.swing.JScrollPane;
 
 public class MainWindow {
 
@@ -91,8 +97,6 @@ public class MainWindow {
 	private JLabel lblRa;
 	private JLabel lblName;
 	private JLabel lblCourse;
-	
-	private GroupLayout gl_panel_3;
 	private GroupLayout gl_panel_6;
 	private GroupLayout gl_panel_7;
 	private GroupLayout gl_panel_8;
@@ -102,6 +106,9 @@ public class MainWindow {
 	private GroupLayout gl_panel_12;
 	private GroupLayout gl_panel_13;
 	private GroupLayout gl_panel_14;
+	private JTable table;
+	private JButton btnShow;
+	private JScrollPane scrollPane;
 	
 
 	public static void main(String[] args) 
@@ -679,16 +686,66 @@ public class MainWindow {
 		
 		panel_3 = new JPanel();
 		tabbedPane.addTab("QUERIES", null, panel_3, null);
-		gl_panel_3 = new GroupLayout(panel_3);
-		gl_panel_3.setHorizontalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 754, Short.MAX_VALUE)
-		);
-		gl_panel_3.setVerticalGroup(
-			gl_panel_3.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 327, Short.MAX_VALUE)
-		);
-		panel_3.setLayout(gl_panel_3);
+		panel_3.setLayout(new BorderLayout(0, 0));
+		
+		btnShow = new JButton("SHOW");
+		btnShow.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnShow.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try
+				{
+					DefaultTableModel model = (DefaultTableModel) table.getModel();
+					
+					DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+					centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+					
+					int qtasLinhas = model.getRowCount();
+					for (int i = qtasLinhas - 1; i >= 0; i--) 
+					{
+					    model.removeRow(i);
+					}
+					
+					MeuResultSet result = Students.getStudents();
+					while(result.next())
+					{
+						model.addRow(new Object[]{result.getInt(1), result.getString(2), result.getInt(3), result.getString(4), result.getString(5), result.getInt(6)});
+					}
+					
+					for(int i = 0; i <= 5; i++)
+						table.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null, "Students not found! Try again!", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnShow.setFont(new Font("Dialog", Font.PLAIN, 25));
+		btnShow.setForeground(Color.WHITE);
+		btnShow.setBackground(Color.BLACK);
+		panel_3.add(btnShow, BorderLayout.SOUTH);
+		
+		scrollPane = new JScrollPane();
+		panel_3.add(scrollPane, BorderLayout.CENTER);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"RA", "Name", "Course", "Zip Code", "Complement", "Number"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, String.class, Integer.class, String.class, String.class, Integer.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
 	}
 	
 	private void ScreenCleaner()
