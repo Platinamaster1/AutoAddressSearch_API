@@ -46,6 +46,14 @@ import javax.swing.table.DefaultTableModel;
 import core.MeuResultSet;
 import javax.swing.JScrollPane;
 
+
+/**
+MainWindow class represents the application's main window.
+This class allows the user to use the CRUD.
+In this class, we can find a main and a constructor.
+@author Nícolas Maisonnette Duarte and Enzo Furegatti Spinella.
+@since 2020.
+*/
 public class MainWindow {
 
 	private JFrame frame;
@@ -110,7 +118,12 @@ public class MainWindow {
 	private JButton btnShow;
 	private JScrollPane spStudents;
 	
-
+	
+	/**
+	 * Runs the application.
+	 * Creates a MainWindow instance and makes it visible.
+	 * @param args adition parameter by the user.
+	 */
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -130,13 +143,20 @@ public class MainWindow {
 		});
 	}
 
+	/**
+	 * Runs the method initialize.
+	 * Uses the method initialize to initialize the form.
+	 */
 	public MainWindow() {
 		initialize();
 	}
-
+	
+	/**
+	 * Initializes the form.
+	 * Uses variables and methods to initialize the form.
+	 */
 	private void initialize() {
 		frame = new JFrame();
-		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\nicol\\OneDrive\\Outros\\Documentos\\GitHub\\PublicAreaConsultant_WEBSERVER\\images\\student"));
 		frame.setBounds(100, 100, 775, 474);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -172,6 +192,11 @@ public class MainWindow {
 		btnSearchStudent.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnSearchStudent.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Searches a student.
+			 * Searches a student using the RA.
+			 * @param arg0 additional parameter.
+			*/
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
@@ -216,6 +241,11 @@ public class MainWindow {
 		btnInsert.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnInsert.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Inserts a student.
+			 * Inserts a student using all the information on the screen.
+			 * @param arg0 additional parameter.
+			*/
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
@@ -257,6 +287,11 @@ public class MainWindow {
 		btnUpdate.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnUpdate.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Updates a student.
+			 * Updates a student using all the information on the screen.
+			 * @param arg0 additional parameter.
+			*/
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
@@ -295,6 +330,11 @@ public class MainWindow {
 		btnDelete.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnDelete.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Deletes a student.
+			 * Deletes a student using the written RA.
+			 * @param e additional parameter.
+			*/
 			public void actionPerformed(ActionEvent e) 
 			{
 				try
@@ -493,6 +533,11 @@ public class MainWindow {
 		btnSearch.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnSearch.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Searches the Zip code with an API.
+			 * Searches the Zip code with an API and writes the result.
+			 * @param arg0 additional parameter.
+			*/
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				Logradouro logradouro = (Logradouro)ClienteWS.getObjeto(Logradouro.class, "http://api.postmon.com.br/v1/cep/" + txtZip.getText());
@@ -694,6 +739,11 @@ public class MainWindow {
 		btnShow.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnShow.addActionListener(new ActionListener() 
 		{
+			/**
+			 * Shows the students.
+			 * Puts all the registered students' data inside a JTable.
+			 * @param arg0 additional parameter.
+			*/
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				try
@@ -752,6 +802,10 @@ public class MainWindow {
 		});
 	}
 	
+	/**
+	 * Cleans the screen.
+	 * Cleans all the JTextFields on the screen.
+	*/
 	private void ScreenCleaner()
 	{
 		txtZip.setText("");

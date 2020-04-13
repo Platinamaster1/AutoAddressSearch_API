@@ -3,7 +3,7 @@ package dbos;
 /**
  * The Student Class consists in a class which presents the attributes, getters and setters of an item of a table in SQL server called Students. 
  * It is used for better access between the Data Base we're using and our project.
- * @author Enzo Furegatti Spinella (19168) and Nícolas Maisonnette Duarte (19192)
+ * @author Enzo Furegatti Spinella (19168) and Nï¿½colas Maisonnette Duarte (19192)
  * @since 2020
  */
 public class Student 
