@@ -108,7 +108,7 @@ public class MainWindow {
 	private GroupLayout gl_panel_14;
 	private JTable table;
 	private JButton btnShow;
-	private JScrollPane scrollPane;
+	private JScrollPane spStudents;
 	
 
 	public static void main(String[] args) 
@@ -231,6 +231,8 @@ public class MainWindow {
 						Student student = new Student(ra, name, course, zip, complem, number);
 						Students.insert(student);
 						JOptionPane.showMessageDialog(null, "Sucessful insert!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+						if(spStudents.isEnabled())
+							btnShow.doClick();
 					}
 					else
 					{
@@ -696,6 +698,7 @@ public class MainWindow {
 			{
 				try
 				{
+					spStudents.setEnabled(true);
 					DefaultTableModel model = (DefaultTableModel) table.getModel();
 					
 					DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -727,11 +730,12 @@ public class MainWindow {
 		btnShow.setBackground(Color.BLACK);
 		panel_3.add(btnShow, BorderLayout.SOUTH);
 		
-		scrollPane = new JScrollPane();
-		panel_3.add(scrollPane, BorderLayout.CENTER);
+		spStudents = new JScrollPane();
+		spStudents.setEnabled(false);
+		panel_3.add(spStudents, BorderLayout.CENTER);
 		
 		table = new JTable();
-		scrollPane.setViewportView(table);
+		spStudents.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
