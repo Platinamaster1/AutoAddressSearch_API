@@ -3,12 +3,12 @@ package dbos;
 public class Student 
 {
 	// ATRIBUTOS
-	private int ra;
-	private String name;
-	private int courseNumber;
-	private String zipCode;
-	private String complement;
-	private int number;
+	protected int ra;
+	protected String name;
+	protected int courseNumber;
+	protected String zipCode;
+	protected String complement;
+	protected int number;
 	
 	public Student (int ra, String name, int courseN, String zipCode, String complement, int number) throws Exception
 	{
@@ -134,7 +134,7 @@ public class Student
 		return ret;
 	}
 	
-	private Student(Student model) throws Exception
+	public Student(Student model) throws Exception
 	{
 		if(model==null)
 			throw new Exception ("Invalid Model!");
