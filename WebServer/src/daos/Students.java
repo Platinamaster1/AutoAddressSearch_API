@@ -5,10 +5,28 @@ import core.BDSQLServer;
 import core.MeuResultSet;
 import dbos.Student;
 
+/**
+ * The Students class consists in a class that is the "bridge" between the Data Base and the project.
+ * Its by using the class that the program uses the data from the DB in the project.
+ * @author Enzo Furegatti Spinella (19168) and Nicolas Maisonnette Duarte
+ * @since 2020
+ */
 public class Students 
 {
+	/**
+	 * The Method exists searches if the ra (which is the primary key of the table Students) is registered in the Data Base.
+	 * It uses the sql "SELECT" command to search, and then, by using the resultado.first(), it knows if there is a result of the "SELECT". (If there is a student with
+	 * that RA registered.
+	 * @param ra Is the param used to the sql search, represents the primary key.
+	 * @return retorno, that is true when there is a student registered with the param RA value, and that is false when there isn't.
+	 * @throws Exception When the RA is invalid and when something wrong happens in the DB search.
+	 * @see BDSQLServer
+	 * @see MeuResultSet
+	 */
 	public static boolean exists (int ra) throws Exception
     {
+		if (ra < 0)
+			throw new Exception("Invalid RA!");
         boolean retorno = false;
 
         try
@@ -23,7 +41,7 @@ public class Students
 
             BDSQLServer.COMANDO.setInt (1, ra);
 
-            MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery (); //Coloca o resultado em uma variável
+            MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery (); 
 
             retorno = resultado.first();
         }
@@ -35,6 +53,12 @@ public class Students
         return retorno;
     }
 	
+	/**
+	 * The method insert inserts in the DB the student given in the param, by using the "INSERT" command in SQL.
+	 * @param student It's the student that will be added into the DB.
+	 * @throws Exception When the Student is null or when something wrong happens in the DB insertion. 
+	 * @see BDSQLServer
+	 */
 	public static void insert (Student student) throws Exception
 	{
 		if(student==null)
@@ -61,6 +85,13 @@ public class Students
 			throw new Exception ("Student Insertion Error");
 		}
 	}
+	/**
+	 * The method update is used to update some data in the DB, it do this by using the "UPDATE" command from sql.
+	 * @param student Is the param that contains the student and it's alterations.
+	 * @throws Exception When the student given is null, when the student given don't exists in the DB and when something goes wrong in the DB update.
+	 * @see Students.exists()
+	 * @see BDSQLServer
+	 */
 	public static void update (Student student) throws Exception
 	{
 		if(student==null)
@@ -90,8 +121,17 @@ public class Students
 			throw new Exception ("Student Update Error");
 		}
 	}
+	/**
+	 * The method delete is used to delete some student in the DB, it do this by using the "DELETE" command from sql.
+	 * @param ra Is the param that contains the ra from the student that will be deleted.
+	 * @throws Exception When the RA is invalid, when the student isn't registered to be deleted and when something wrong happens in the DB deletion.
+	 * @see Students.exists();
+	 * @see BDSQLServer
+	 */
 	public static void delete (int ra) throws Exception
 	{
+		if(ra < 0)
+			throw new Exception ("Invalid RA!");
 		if(!Students.exists(ra))
 			throw new Exception("Student not found!");
 		
@@ -111,8 +151,18 @@ public class Students
 			throw new Exception ("Student Deletion Error");
 		}
 	}
+	/**
+	 * The method getStudent is used to search in sql, in special, to get a unique student from the ra given in the param.
+	 * @param ra Is the RA from the student that is being searched.
+	 * @return student, Its the student with all its attributes, if it exists.
+	 * @throws Exception When the RA given is invalid, when the RA doesn't match with any of the registered students.
+	 * @see BDSQLServer
+	 * @see MeuResultSet
+	 */
 	public static Student getStudent(int ra) throws Exception 
 	{
+		if(ra < 0)
+			throw new Exception ("Invalid RA!");
 		Student student = null;
 		
 		try
@@ -137,6 +187,13 @@ public class Students
 		
 		return student;
 	}
+	/**
+	 * The method getStudents is used to search in sql, in special, to get all the Students that are registered in the DB table.
+	 * @return resultado, which contains all the registers from the table Students.
+	 * @throws Exception When Something wrong happens in the DB search.
+	 * @see BDSQLServer
+	 * @see MeuResultSet
+	 */
 	public static MeuResultSet getStudents() throws Exception
 	{
 		MeuResultSet resultado = null;
