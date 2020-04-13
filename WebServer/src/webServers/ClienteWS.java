@@ -34,6 +34,7 @@ public class ClienteWS
      * @param tipoObjetoRetorno the Object's class.
      * @param urlWebService the API's url.
      * @param parametros parameters needed by the API.
+     * @return the found Object.
     */
     public static Object getObjeto (Class tipoObjetoRetorno,
                                     String urlWebService,
@@ -74,6 +75,7 @@ public class ClienteWS
      * @param tipoObjetoRetorno the Object's class.
      * @param urlWebService the API's url.
      * @param objetoEnvio the object sent to the API.
+     * @return the post result.
     */
     public static Object postObjeto (Object objetoEnvio,
                                      Class tipoObjetoRetorno,
@@ -122,6 +124,7 @@ public class ClienteWS
      * Converts an InputStream to String.
      * @param is InputStream to be converted.
      * @throws IOException when any action goes wrong.
+     * @return the String made.
     */
     public static String inputStreamToString (InputStream is) throws IOException
     {
@@ -157,6 +160,7 @@ public class ClienteWS
      * Converts an Object to JSon.
      * @param objeto Object to be converted.
      * @throws Exception when any action goes wrong.
+     * @return the String made.
     */
     public static String toJson(Object objeto) throws Exception
     {
@@ -172,6 +176,7 @@ public class ClienteWS
      * @param json JSon to be converted.
      * @param objectClass the "to be converted" Object's class.
      * @throws Exception when any action goes wrong.
+     * @return the Object made.
     */
     public static Object fromJson(String json, Class objectClass) throws Exception
     {
