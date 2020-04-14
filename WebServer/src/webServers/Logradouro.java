@@ -1,22 +1,24 @@
 package webServers;
 
+/**
+ * The Logradouro Class consists of a class which presents the attributes, getters and setters of and Object that comes from a web API of Zip Codes. 
+ * It is used to organize all the information that comes from a JSON object called Logradouro.
+ * @author André Luis dos Reis Gomes de Carvalho.
+ */
 public class Logradouro
 {
-	/**
-	 * The attribute that represents the Logradouro of an Address.
-	 */
     private String logradouro;
     /**
 	 * This Method is used when the developer wants to know the Logradouro value, but by this method, it can't be changed.
-	 * @return The Logradouro's value, which in the class is Private
+	 * @return The Logradouro's value, which in the class is Private.
 	 */
     public  String getLogradouro ()
     {
         return this.logradouro;
     }
     /**
-	 * This method verify if the Logradouro is valid and if so, gives the value from the param to the attribute
-	 * @param logradouro Represents the Logradouro attribute
+	 * This method verify if the Logradouro is valid and if so, gives the value from the param to the attribute.
+	 * @param logradouro Represents the Logradouro attribute.
 	 * @throws Exception When the Logradouro is invalid.
 	 */
     public void setLogradouro (String logradouro) throws Exception
@@ -27,21 +29,18 @@ public class Logradouro
         this.logradouro = logradouro;
     }
     
-    /**
-	 * The attribute that represents the Complement of an Address.
-	 */
     private String complemento;
     /**
 	 * This Method is used when the developer wants to know the Complement value, but by this method, it can't be changed.
-	 * @return The Complement's value, which in the class is Private
+	 * @return The Complement's value, which in the class is Private.
 	 */
     public  String getComplemento ()
     {
         return this.complemento;
     }
     /**
-	 * This method verify if the Complement is valid and if so, gives the value from the param to the attribute
-	 * @param complemento Represents the Complement attribute
+	 * This method verify if the Complement is valid and if so, gives the value from the param to the attribute.
+	 * @param complemento Represents the Complement attribute.
 	 * @throws Exception When the Complement is invalid.
 	 */
     public void setComplemento (String complemento) throws Exception
@@ -51,22 +50,19 @@ public class Logradouro
     	else
     		this.complemento = null;
     }
-    
-    /**
-	 * The attribute that represents the Neighboorhood of an Address.
-	 */
+
     private String bairro;
     /**
 	 * This Method is used when the developer wants to know the Neighboorhood value, but by this method, it can't be changed.
-	 * @return The Neighboorhood's value, which in the class is Private
+	 * @return The Neighboorhood's value, which in the class is Private.
 	 */
     public  String getBairro ()
     {
         return this.bairro;
     }
     /**
-	 * This method verify if the Neighboorhood is valid and if so, gives the value from the param to the attribute
-	 * @param bairro Represents the Neighboorhood attribute
+	 * This method verify if the Neighboorhood is valid and if so, gives the value from the param to the attribute.
+	 * @param bairro Represents the Neighboorhood attribute.
 	 * @throws Exception When the Neighboorhood is invalid.
 	 */
     public void setBairro (String bairro) throws Exception
@@ -76,22 +72,19 @@ public class Logradouro
 
         this.bairro = bairro;
     }
-    
-    /**
-	 * The attribute that represents the City of an Address.
-	 */
+
     private String cidade;
     /**
 	 * This Method is used when the developer wants to know the City value, but by this method, it can't be changed.
-	 * @return The City's value, which in the class is Private
+	 * @return The City's value, which in the class is Private.
 	 */
     public  String getCidade ()
     {
         return this.cidade;
     }
     /**
-	 * This method verify if the City is valid and if so, gives the value from the param to the attribute
-	 * @param cidade Represents the City attribute
+	 * This method verify if the City is valid and if so, gives the value from the param to the attribute.
+	 * @param cidade Represents the City attribute.
 	 * @throws Exception When the City is invalid.
 	 */
     public void setCidade (String cidade) throws Exception
@@ -102,22 +95,18 @@ public class Logradouro
         this.cidade = cidade;
     }
     
-    /**
-	 * The attribute that represents the City Information of an Address.
-	 */
     private InfoCidade cidade_info;
     /**
 	 * This Method is used when the developer wants to know the City Information value, but by this method, it can't be changed.
-	 * @return The City Information's value, which in the class is Private
-	 * @see cidade_info.clone()
+	 * @return The City Information's value, which in the class is Private.
 	 */
     public InfoCidade getCidade_info ()
     {
         return (InfoCidade)this.cidade_info.clone();
     }
     /**
-	 * This method verify if the City Information is valid and if so, gives the value from the param to the attribute
-	 * @param infoCidade Represents the City Information attribute
+	 * This method verify if the City Information is valid and if so, gives the value from the param to the attribute.
+	 * @param infoCidade Represents the City Information attribute.
 	 * @throws Exception When the City Information is invalid.
 	 */
     public void setCidade_info (InfoCidade infoCidade) throws Exception
@@ -128,21 +117,18 @@ public class Logradouro
         this.cidade_info = (InfoCidade)infoCidade.clone();
     }
 
-    /**
-	 * The attribute that represents the State of an Address.
-	 */
     private String estado;
     /**
 	 * This Method is used when the developer wants to know the State value, but by this method, it can't be changed.
-	 * @return The State's value, which in the class is Private
+	 * @return The State's value, which in the class is Private.
 	 */
     public  String getEstado ()
     {
         return this.estado;
     }
     /**
-	 * This method verify if the State is valid and if so, gives the value from the param to the attribute
-	 * @param estado Represents the State attribute
+	 * This method verify if the State is valid and if so, gives the value from the param to the attribute.
+	 * @param estado Represents the State attribute.
 	 * @throws Exception When the State is invalid.
 	 */
     public void setEstado (String estado) throws Exception
@@ -153,21 +139,18 @@ public class Logradouro
         this.estado = estado;
     }
 
-    /**
-	 * The attribute that represents the State Information of an Address.
-	 */
     private InfoEstado estado_info;
     /**
 	 * This Method is used when the developer wants to know the State Information value, but by this method, it can't be changed.
-	 * @return The State Information's value, which in the class is Private
+	 * @return The State Information's value, which in the class is Private.
 	 */
     public  InfoEstado getEstado_info ()
     {
         return (InfoEstado)this.estado_info.clone();
     }
     /**
-	 * This method verify if the State Information is valid and if so, gives the value from the param to the attribute
-	 * @param infoEstado Represents the State Information attribute
+	 * This method verify if the State Information is valid and if so, gives the value from the param to the attribute.
+	 * @param infoEstado Represents the State Information attribute.
 	 * @throws Exception When the State Information is invalid.
 	 */
     public void setEstado_info (InfoEstado infoEstado) throws Exception
@@ -178,21 +161,18 @@ public class Logradouro
         this.estado_info = (InfoEstado)infoEstado.clone();
     }
 
-    /**
-	 * The attribute that represents the Zip Code of an Address.
-	 */
     private String cep;
     /**
 	 * This Method is used when the developer wants to know the Zip Code value, but by this method, it can't be changed.
-	 * @return The Zip Code's value, which in the class is Private
+	 * @return The Zip Code's value, which in the class is Private.
 	 */
     public  String getCep ()
     {
         return this.cep;
     }
     /**
-	 * This method verify if the Zip Code is valid and if so, gives the value from the param to the attribute
-	 * @param cep Represents the Zip Code attribute
+	 * This method verify if the Zip Code is valid and if so, gives the value from the param to the attribute.
+	 * @param cep Represents the Zip Code attribute.
 	 * @throws Exception When the Zip Code is invalid.
 	 */
     public void setCep (String cep) throws Exception
@@ -205,14 +185,14 @@ public class Logradouro
     
     /**
 	 * This method is the class constructor, it gives to the attributes a value specified in the params.
-	 * @param complemento Represents the complemento attribute
-	 * @param logradouro Represents the logradouro attribute
-	 * @param bairro Represents the bairro attribute
-	 * @param cidade Represents the cidade attribute
-	 * @param cidade_info Represents the cidade_info attribute
-	 * @param estado Represents the estado attribute
-	 * @param estado_info Represents the estado_info attribute
-	 * @param cep Represents the cep attribute
+	 * @param complemento Represents the complemento attribute.
+	 * @param logradouro Represents the logradouro attribute.
+	 * @param bairro Represents the bairro attribute.
+	 * @param cidade Represents the cidade attribute.
+	 * @param cidade_info Represents the cidade_info attribute.
+	 * @param estado Represents the estado attribute.
+	 * @param estado_info Represents the estado_info attribute.
+	 * @param cep Represents the cep attribute.
 	 * 
 	 * @throws Exception When any of the method used founds an error.
 	 */
@@ -259,8 +239,7 @@ public class Logradouro
 
     /**
 	 * This Method is used to Compare two Objects and see if they are equal or not, it represents the Object way of doing "==" in JAVA.
-	 * @return true, If they are equal.
-	 * @return false, If they are not equal.
+	 * @return true, if they are equal, and false, if they aren't.
 	 */
     public boolean equals (Object obj)
     {
@@ -327,7 +306,7 @@ public class Logradouro
 
     /**
 	 * This method is the Constructor of Copies, It is like the constructor itself, but it's used to create a logradouro with the same values of the one that is in the param.
-	 * @param model It's the Logradouro that will have their data copied into the one that called this method.
+	 * @param modelo It's the Logradouro that will have their data copied into the one that called this method.
 	 * @throws Exception When the model given is null (wasn't initialized).
 	 */
     public Logradouro (Logradouro modelo) throws Exception

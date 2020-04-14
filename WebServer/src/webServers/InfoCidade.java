@@ -1,27 +1,24 @@
 package webServers;
 
 /**
- * The InfoCidade Class consists in a class which presents the attributes, getters and setters of and Object that comes from a web API of Zip Codes. 
+ * The InfoCidade Class consists of a class which presents the attributes, getters and setters of and Object that comes from a web API of Zip Codes. 
  * It is used to organize all the information that comes from a JSON object called InfoCidade.
- * @author André Luis dos Reis Gomes de Carvalho
+ * @author André Luis dos Reis Gomes de Carvalho.
  */
 public class InfoCidade
 {
-	/**
-	 * The attribute that represents the IBGE Code of the City of an Address.
-	 */
     private String codigo_ibge;
     /**
 	 * This Method is used when the developer wants to know the IBGE Code value, but by this method, it can't be changed.
-	 * @return The IBGE Code's value, which in the class is Private
+	 * @return The IBGE Code's value, which in the class is Private.
 	 */
     public  String getCodigo_ibge ()
     {
         return this.codigo_ibge;
     }
     /**
-	 * This method verify if the IBGE Code is valid and if so, gives the value from the param to the attribute
-	 * @param codigoIBGE Represents the IBGE Code attribute
+	 * This method verify if the IBGE Code is valid and if so, gives the value from the param to the attribute.
+	 * @param codigoIBGE Represents the IBGE Code attribute.
 	 * @throws Exception When the IBGE Code is invalid.
 	 */
     public void setCodigo_ibge (String codigoIBGE) throws Exception
@@ -32,21 +29,18 @@ public class InfoCidade
         this.codigo_ibge = codigoIBGE;
     }
     
-    /**
-	 * The attribute that represents the Area(km²) of the City of an Address.
-	 */
     private String area_km2;
     /**
 	 * This Method is used when the developer wants to know the Area(km²) value, but by this method, it can't be changed.
-	 * @return The Area(km²)'s value, which in the class is Private
+	 * @return The Area(km²)'s value, which in the class is Private.
 	 */
     public  String getArea_km2()
     {
         return this.area_km2;
     }
     /**
-	 * This method verify if the Area(km²) is valid and if so, gives the value from the param to the attribute
-	 * @param areaEmKm2 Represents the Area(km²) attribute
+	 * This method verify if the Area(km²) is valid and if so, gives the value from the param to the attribute.
+	 * @param areaEmKm2 Represents the Area(km²) attribute.
 	 * @throws Exception When the Area(km²) is invalid.
 	 */
     public void setArea_km2 (String areaEmKm2) throws Exception
@@ -59,8 +53,8 @@ public class InfoCidade
     
     /**
 	 * This method is the class constructor, it gives to the attributes a value specified in the params.
-	 * @param codigoIBGE Represents the IBGE Code attribute
-	 * @param areaEmKm2 Represents the Area(km²) attribute
+	 * @param codigoIBGE Represents the IBGE Code attribute.
+	 * @param areaEmKm2 Represents the Area(km²) attribute.
 	 * @throws Exception When any of the method used founds an error.
 	 */
     public InfoCidade (String codigoIBGE, String areaEmKm2) throws Exception
@@ -85,8 +79,7 @@ public class InfoCidade
     }
     /**
 	 * This Method is used to Compare two Objects and see if they are equal or not, it represents the Object way of doing "==" in JAVA.
-	 * @return true, If they are equal.
-	 * @return false, If they are not equal.
+	 * @return true, if they are equal, and false if they aren't.
 	 */
     public boolean equals (Object obj)
     {
@@ -126,7 +119,7 @@ public class InfoCidade
     }
     /**
 	 * This method is the Constructor of Copies, It is like the constructor itself, but it's used to create an InfoCidade with the same values of the one that is in the param.
-	 * @param model It's the InfoCidade that will have their data copied into the one that called this method.
+	 * @param modelo It's the InfoCidade that will have their data copied into the one that called this method.
 	 * @throws Exception When the model given is null (wasn't initialized).
 	 */
     public InfoCidade (InfoCidade modelo) throws Exception
